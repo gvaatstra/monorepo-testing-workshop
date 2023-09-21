@@ -36,9 +36,13 @@
 
        - name: Show preview url
          run: echo ${{ needs.vercel-ta.outputs.preview_url }}
+         env:
+           PLAYWRIGHT_BASE_URL: ${{ needs.vercel-ta.steps.waitFor200.outputs.url }}
 
        - name: Show preview url 2
          run: echo ${{ needs.vercel-ta.steps.setUrl.outputs.pwurl }}
+         env:
+           PLAYWRIGHT_BASE_URL: ${{ needs.vercel-ta.steps.setUrl.outputs.pwurl }}
 
        - name: Run Playwright tests
          run: pnpm --filter test-automation run e2e
