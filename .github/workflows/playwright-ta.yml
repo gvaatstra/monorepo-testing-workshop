@@ -1,6 +1,6 @@
  name: Playwright Test Automation
 
- on: [pull_request]
+ on: [pull_request, push]
 
  jobs:
    vercel-ta:
