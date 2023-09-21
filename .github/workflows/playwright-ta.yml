@@ -5,7 +5,7 @@
  jobs:
    vercel-ta:
      name: Wait for Vercel (test-automation)
-     use: https://github.com/patrickedqvist/wait-for-vercel-preview
+     uses: https://github.com/patrickedqvist/wait-for-vercel-preview
      id: waitFor200
      with:
        token: ${{ secrets.GITHUB_TOKEN }}
