@@ -14,6 +14,8 @@
            max_timeout: 60
        # access preview url
        - run: echo ${{steps.waitFor200.outputs.url}}
+       - id: setUrl
+         run: echo "::set-output name=pwurl::${{steps.waitFor200.outputs.url}}"
    playwright-ta:
      needs: vercel-ta
      runs-on: ubuntu-latest
@@ -38,4 +40,5 @@
        - name: Run Playwright tests
          run: pnpm --filter test-automation run e2e
          env:
-           PLAYWRIGHT_BASE_URL: ${{ needs.vercel-ta.steps.waitFor200.outputs.url }}
+#           PLAYWRIGHT_BASE_URL: ${{ needs.vercel-ta.steps.waitFor200.outputs.url }}
+           PLAYWRIGHT_BASE_URL: ${{ needs.vercel-ta.steps.setUrl.outputs.pwurl }}
